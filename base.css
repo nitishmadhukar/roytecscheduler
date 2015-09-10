@@ -1,0 +1,68 @@
+/* ---------- LOGIN ---------- */
+.main_login_pag {
+    margin: 0 auto;
+    width: 320px;
+	position:relative;
+}
+.x-autocontainer-outerCt {
+    left: 0;
+    position: absolute;
+    top: 43px;
+    width: 100%;
+}
+.logo_main{ background:url(images/ROYTECLogo.png);
+  height: 83px;
+    width: 261px;
+	background-repeat:no-repeat;
+	float:left;
+}
+.main_wrapp_pag {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+#ext-element-6 {
+    display:none !important;
+}
+.footer_main {
+    background-color: #95a5a6;;
+	    color: #ffffff;
+    height: auto;
+    text-align: center;
+    width: 100%;
+	 font-size: 14px;
+    line-height: 18px;
+	 padding: 3px 0;
+	 border-top: 1px solid #546e7a;  
+	 position: fixed;
+	    bottom: 0;
+}
+.panel_main {
+    padding: 0;
+}
+.panel-heading_top {
+ background: #f5f5f5;
+    border-bottom: 2px solid #ccc;
+    color: #ffffff;
+	 box-shadow: 0 0 3px #cccccc;
+}
+.main_wrapp_pag .panel-heading_top  {
+    height: 86px;
+}
+.panel-body_cont {
+    padding: 20px;
+}
+.main_wrapp_pag h2 {
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 40px;
+    margin: 0;
+    padding: 0 10px;
+}
+#ext-element-7 {
+    display: none !important;
+}
+.bryntum-trial {
+    display: none !important;
+}
+
