@@ -36,6 +36,7 @@ Ext.define('App.controller.MinuteSchedulerGridController', {
         var contractNumber = changedRecord.data.Contract;
         var itemPartNumber = changedRecord.data.Item;
         //var startTime = changedRecord.data.StartDate.toGMTString();
+		// debugger;
 		var startTime = App.constants.Constants.convertDateToSpecifiDate(changedRecord.data.StartDate);
        // var endTime = changedRecord.data.EndDate.toGMTString();
 	   var endTime = App.constants.Constants.convertDateToSpecifiDate(changedRecord.data.EndDate);
@@ -52,8 +53,17 @@ Ext.define('App.controller.MinuteSchedulerGridController', {
                     callback: function(records, operation, success) {
 						Ext.getBody().unmask();
                         if (success) {
-							var minuteSchedulerGrid = Ext.ComponentQuery.query('#minuteSchedulerGrid')[0];
-							minuteSchedulerGrid.switchViewPreset('customMinuteAndDayPreSet');
+							// var minuteSchedulerGrid = Ext.ComponentQuery.query('#minuteSchedulerGrid')[0];
+							// minuteSchedulerGrid.switchViewPreset('customMinuteAndDayPreSet');
+							var schedulerLandingPageView = Ext.ComponentQuery.query('#schedulerLandingPageView')[0];
+							schedulerLandingPageView.removeAll();
+							// var minuteSchedulerGrid=Ext.create('App.view.MinuteSchedulerGrid');
+							schedulerLandingPageView.add({
+								items: [{
+											xtype: 'minuteschedulergrid',
+										}
+									]
+							});
                         } else {
                             Ext.Msg.alert('Status', 'Failure');
                         }

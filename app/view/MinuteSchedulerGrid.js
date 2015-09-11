@@ -45,13 +45,23 @@ Ext.define('App.view.MinuteSchedulerGrid', {
                     callback: function(records, operation, success) {
 						Ext.getBody().unmask();
                         if (success) {
-							var minuteSchedulerGrid = Ext.ComponentQuery.query('#minuteSchedulerGrid')[0];
-							minuteSchedulerGrid.switchViewPreset('customMinuteAndDayPreSet');
+							var schedulerLandingPageView = Ext.ComponentQuery.query('#schedulerLandingPageView')[0];
+							schedulerLandingPageView.removeAll();
+							// var minuteSchedulerGrid=Ext.create('App.view.MinuteSchedulerGrid');
+							schedulerLandingPageView.add({
+								items: [{
+											xtype: 'minuteschedulergrid',
+										}
+									]
+							});
+							
+							//schedulerLandingPageView.add(minuteSchedulerGrid);
                         } else {
                             Ext.Msg.alert('Status', 'Failure');
                         }
                     }
                 });
+				//alert('lkj');
 	},60000);
 		}
 	}
