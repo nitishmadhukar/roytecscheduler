@@ -11,8 +11,8 @@ Ext.define('App.controller.MinuteSchedulerGridController', {
         var contract = item.get('Contract');
         var contractItem = item.get('Item');
         var percentDone = item.get('percentDone');
-        var colorForPercentDone = item.get('colorForPercentDone');
-        var ContractCarletColor = item.get('ContractCarletColor');
+        var colorForPercentDone = item.get('colorForPercentDone').toString();
+        var ContractCarletColor = item.get('ContractCarletColor').toString();
         var displayTask = contract + '<br/>' + contractItem.slice(-6);
         var testPercentDone;
         if (parseFloat(percentDone) < 100) {
