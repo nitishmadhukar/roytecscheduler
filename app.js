@@ -5,9 +5,9 @@ Ext.Loader.setConfig({
 });
 Ext.Loader.setPath('Sch', '../../js/Sch');
 Ext.require([
-    'App.view.SchedulerLandingPageView',
-    'App.view.MinuteSchedulerGrid',
-	'App.constants.Constants'
+    'app.view.SchedulerLandingPageView',
+    'app.view.MinuteSchedulerGrid',
+	'app.constants.Constants'
 ]);
 Ext.onReady(function() {
     Ext.create('Ext.container.Viewport', {
