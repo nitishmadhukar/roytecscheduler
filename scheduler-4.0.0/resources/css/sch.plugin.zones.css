@@ -1,0 +1,28 @@
+/*
+
+Ext Scheduler 4.0.0
+Copyright(c) 2009-2015 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/license
+
+*/
+.sch-zone {
+    height           : 100%;
+    position         : absolute;
+    left             : 0;
+    top              : 0;
+    overflow         : hidden;
+    margin-left      : -1px;
+}
+
+.x-ie8m .sch-zone
+{
+    background : transparent;
+    zoom       : 1;
+}
+
+.sch-print-body .sch-zone {
+    border-left-style : solid;
+    border-left-color : #f4f4f4;
+}
+

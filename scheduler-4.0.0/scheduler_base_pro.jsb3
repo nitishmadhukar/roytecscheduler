@@ -1,0 +1,87 @@
+{
+    "name"        : "Ext Scheduler Base Pro",
+    "licenseText" : "",
+
+    "builds"      : [
+        {
+            "name"      : "Ext Scheduler Base Notheme",
+            "id"        : "ext-scheduler-base-pro-notheme",
+            "target"    : "resources/css/sch-base-pro-notheme-debug.css",
+            "files"     : [
+                { "path"  : "resources/css/sch.tooltip.clocktemplate.css" },
+                { "path"  : "resources/css/sch.column.timeaxis.horizontal.css" },
+                { "path"  : "resources/css/sch.event.css" },
+                { "path"  : "resources/css/sch.feature.dragcreator.css" },
+                { "path"  : "resources/css/sch.feature.dragdrop.css" },
+                { "path"  : "resources/css/sch.feature.resizezone.css" },
+                { "path"  : "resources/css/sch.plugin.dragselector.css" },
+                { "path"  : "resources/css/sch.plugin.lines.css" },
+                { "path"  : "resources/css/sch.plugin.zones.css" },
+                { "path"  : "resources/css/sch.plugin.resourcezones.css" },
+                { "path"  : "resources/css/sch.plugin.export.css" },
+                { "path"  : "resources/css/sch.feature.columnlines.css" },
+                { "path"  : "resources/css/sch.plugin.printable.css" },
+                { "path"  : "resources/css/sch.print.printable.css" },
+                { "path"  : "resources/css/sch.tooltip.tooltip.css" },
+                { "path"  : "resources/css/sch.view.horizontal.css" },
+                { "path"  : "resources/css/sch.view.tree.css" },
+                { "path"  : "resources/css/sch.view.timeline.css" },
+                { "path"  : "resources/css/sch.view.vertical.css" }
+            ]
+        },
+
+        {
+            "name"      : "Ext Scheduler Base Styles",
+            "id"        : "ext-scheduler-base-pro-styles",
+            "target"    : "resources/css/sch-base-pro-debug.css",
+            "files"     : [
+                { "path"  : "resources/css/sch-base-pro-notheme-debug.css" },
+                { "path"  : "resources/css/sch.view.timeline-classic.css" },
+                { "path"  : "resources/css/sch.plugin.zones-classic.css" },
+                { "path"  : "resources/css/sch.column.picker.css" },
+                { "path"  : "resources/css/sch.column.timeaxis.horizontal-classic.css" },
+                { "path"  : "resources/css/sch.event-classic.css" }
+            ]
+        },
+        {
+            "name"      : "Ext Scheduler Base Neptune Styles",
+            "id"        : "ext-scheduler-base-pro-neptune-styles",
+            "target"    : "resources/css/sch-base-pro-neptune-debug.css",
+            "files"     : [
+                { "path"  : "resources/css/sch-base-pro-notheme-debug.css" },
+                { "path"  : "resources/css/sch.view.timeline-classic.css" },
+                { "path"  : "resources/css/sch.plugin.zones-classic.css" },
+                { "path"  : "resources/css/sch.column.picker.css" },
+                { "path"  : "resources/css/sch.column.timeaxis.horizontal-neptune.css" },
+                { "path"  : "resources/css/sch.event-neptune.css" }
+            ]
+        },
+        {
+            "name"      : "Ext Scheduler Base Crisp Styles",
+            "id"        : "ext-scheduler-base-pro-crisp-styles",
+            "target"    : "resources/css/sch-base-pro-crisp-debug.css",
+            "files"     : [
+                { "path"  : "resources/css/sch-base-pro-notheme-debug.css" },
+                { "path"  : "resources/css/sch.view.timeline-classic.css" },
+                { "path"  : "resources/css/sch.plugin.zones-classic.css" },
+                { "path"  : "resources/css/sch.column.picker.css" },
+                { "path"  : "resources/css/sch.column.timeaxis.horizontal-crisp.css" },
+                { "path"  : "resources/css/sch.event-crisp.css" }
+            ]
+        },
+        {
+            "name"      : "Ext Scheduler Base Triton Styles",
+            "id"        : "ext-scheduler-base-pro-triton-styles",
+            "target"    : "resources/css/sch-base-pro-triton-debug.css",
+            "files"     : [
+                { "path"  : "resources/css/sch-base-pro-notheme-debug.css" },
+                { "path"  : "resources/css/sch.view.timeline-triton.css" },
+                { "path"  : "resources/css/sch.plugin.zones-triton.css" },
+                { "path"  : "resources/css/sch.column.picker-triton.css" },
+                { "path"  : "resources/css/sch.column.timeaxis.horizontal-triton.css" },
+                { "path"  : "resources/css/sch.event-triton.css" }
+            ]
+        }
+    ]
+}
+

@@ -1,0 +1,26 @@
+/*
+
+Ext Scheduler 4.0.0
+Copyright(c) 2009-2015 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/license
+
+*/
+.sch-tip-ok {
+    padding-left : 20px;
+    background   : url(../images/drop-yes.png) no-repeat left top;
+}
+
+.sch-tip-notok {
+    padding-left : 20px;
+    background   : url(../images/drop-no.png) no-repeat left top;
+}
+
+.sch-tooltip-enddate {
+    padding-top : 2px;
+}
+
+
+.sch-tip-message {
+    margin : 3px 0;
+}

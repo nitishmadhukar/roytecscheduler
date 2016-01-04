@@ -1,0 +1,20 @@
+/*
+
+Ext Scheduler 4.0.0
+Copyright(c) 2009-2015 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/license
+
+*/
+.sch-columnpicker-list li.x-boundlist-item {
+    height           : 30px;
+    border           : 0;
+    padding-left     : 28px;
+    line-height      : 30px;
+    background-color : transparent;
+}
+
+.sch-columnpicker-list li.x-boundlist-item.x-boundlist-selected {
+    background      : transparent url(../images/check.png) no-repeat 3px center;
+    background-size : 20px;
+}

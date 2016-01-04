@@ -1,0 +1,17 @@
+/*
+
+Ext Scheduler 4.0.0
+Copyright(c) 2009-2015 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/license
+
+*/
+.sch-zone {
+    background-color : rgba(235, 235, 235, 0.5);
+}
+
+.x-ie8m .sch-zone
+{
+    filter     : progid:DXImageTransform.Microsoft.gradient(startColorstr=#50F5F5F5, endColorstr=#50F5F5F5);
+}
+

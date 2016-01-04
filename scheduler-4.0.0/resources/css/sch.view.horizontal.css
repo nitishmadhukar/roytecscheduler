@@ -1,0 +1,32 @@
+/*
+
+Ext Scheduler 4.0.0
+Copyright(c) 2009-2015 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/license
+
+*/
+.x-ie .sch-horizontal .sch-timelineview td.sch-timetd{
+    z-index          : 0;
+    background-image : url(../images/1px.png); /* z-index hack for IE, keeping columnlines below row cells */
+}
+
+/* Make sure column lines are always out of reach in Chrome */
+.x-webkit .sch-horizontal td.sch-timetd {
+    position : relative;
+}
+
+/* Remove Ext JS default 1px border top of the table */
+.sch-timelinepanel .x-grid-with-row-lines .x-grid-item[data-recordindex="0"] {
+    border-top-color : transparent;
+}
+
+/* Locked column in RTL positioned incorrectly by EXT
+ https://www.sencha.com/forum/showthread.php?299582-RTL-locking-grid-bug
+ https://www.sencha.com/forum/showthread.php?304826-Locked-column-content-is-misaligned-with-RTL-ext
+ TODO: try to get rid of it
+ */
+.sch-locked-column-fixer {
+    margin: 0!important;
+    right:auto!important;
+}

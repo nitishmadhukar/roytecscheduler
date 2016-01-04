@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">// https://www.sencha.com/forum/showthread.php?304819-Click-on-asterisk-throws-exception-in-tree
+Ext.define('Sch.patches.TreeNavigationModel', {
+    extend : 'Sch.util.Patch',
+
+    requires : ['Ext.tree.NavigationModel'],
+    target   : 'Ext.tree.NavigationModel',
+
+    overrides : {
+        onAsterisk  : function () {
+            if (!this.view.ownerCt.expandAll) {
+                this.view.lockingPartner.ownerCt.expandAll();
+                return;
+            }
+
+            this.callParent(arguments);
+        }
+    }
+});
+</pre>
+</body>
+</html>

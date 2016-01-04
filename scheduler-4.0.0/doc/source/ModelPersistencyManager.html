@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='Sch-data-util-ModelPersistencyManager'>/**
+</span> * This class manages model persistency, it listens to model stores' beforesync event and removes all non persistable
+ * records from sync operation. The logic has meaning only for CRUD-less sync operations.
+ *
+ * @private
+ */
+Ext.define('Sch.data.util.ModelPersistencyManager', {
+
+    config : {
+<span id='Sch-data-util-ModelPersistencyManager-cfg-eventStore'>        eventStore      : null,
+</span><span id='Sch-data-util-ModelPersistencyManager-cfg-resourceStore'>        resourceStore   : null,
+</span><span id='Sch-data-util-ModelPersistencyManager-cfg-assignmentStore'>        assignmentStore : null
+</span>    },
+
+<span id='Sch-data-util-ModelPersistencyManager-property-eventStoreDetacher'>    eventStoreDetacher      : null,
+</span><span id='Sch-data-util-ModelPersistencyManager-property-resourceStoreDetacher'>    resourceStoreDetacher   : null,
+</span><span id='Sch-data-util-ModelPersistencyManager-property-assignmentStoreDetacher'>    assignmentStoreDetacher : null,
+</span>
+<span id='Sch-data-util-ModelPersistencyManager-method-constructor'>    constructor : function(config) {
+</span>        this.initConfig(config);
+    },
+
+<span id='Sch-data-util-ModelPersistencyManager-method-updateEventStore'>    // {{{ Event attachers
+</span>    updateEventStore : function(newEventStore, oldEventStore) {
+        var me = this;
+
+        Ext.destroyMembers(me, 'eventStoreDetacher');
+
+        if (newEventStore &amp;&amp; newEventStore.autoSync) {
+            me.eventStoreDetacher = newEventStore.on({
+                beforesync  : me.onEventStoreBeforeSync,
+                scope       : me,
+                destroyable : true,
+                // Just in case
+                priority    : 100
+            });
+        }
+    },
+
+<span id='Sch-data-util-ModelPersistencyManager-method-updateResourceStore'>    updateResourceStore : function(newResourceStore, oldResourceStore) {
+</span>        var me = this;
+
+        Ext.destroyMembers(me, 'resourceStoreDetacher');
+
+        if (newResourceStore &amp;&amp; newResourceStore.autoSync) {
+            me.resourceStoreDetacher = newResourceStore.on({
+                beforesync  : me.onResourceStoreBeforeSync,
+                scope       : me,
+                destroyable : true,
+                // Just in case
+                priority    : 100
+            });
+        }
+    },
+
+<span id='Sch-data-util-ModelPersistencyManager-method-updateAssignmentStore'>    updateAssignmentStore : function(newAssignmentStore, oldAssignmentStore) {
+</span>        var me = this;
+
+        Ext.destroyMembers(me, 'assignmentStoreDetacher');
+
+        if (newAssignmentStore &amp;&amp; newAssignmentStore.autoSync) {
+            me.assignmentStoreDetacher = newAssignmentStore.on({
+                beforesync  : me.onAssignmentStoreBeforeSync,
+                scope       : me,
+                destroyable : true,
+                // Just in case
+                priority    : 100
+            });
+        }
+    },
+    // }}}
+
+<span id='Sch-data-util-ModelPersistencyManager-method-onEventStoreBeforeSync'>    // {{{ Event handlers
+</span>    onEventStoreBeforeSync : function(options) {
+        var me = this;
+        me.removeNonPersistableRecordsToCreate(options);
+        return me.shallContinueSync(options);
+    },
+
+<span id='Sch-data-util-ModelPersistencyManager-method-onResourceStoreBeforeSync'>    onResourceStoreBeforeSync : function(options) {
+</span>        var me = this;
+        me.removeNonPersistableRecordsToCreate(options);
+        return me.shallContinueSync(options);
+    },
+
+<span id='Sch-data-util-ModelPersistencyManager-method-onAssignmentStoreBeforeSync'>    onAssignmentStoreBeforeSync : function(options) {
+</span>        var me = this;
+        me.removeNonPersistableRecordsToCreate(options);
+        return me.shallContinueSync(options);
+    },
+    // }}}
+
+<span id='Sch-data-util-ModelPersistencyManager-method-removeNonPersistableRecordsToCreate'>    // {{{ Management rules
+</span>    removeNonPersistableRecordsToCreate : function(options) {
+        var recordsToCreate = options.create || [],
+            r, i;
+
+        // We remove from the array we iterate thus we iterate from end to start
+        for (i = recordsToCreate.length - 1; i &gt;= 0; --i) {
+            r = recordsToCreate[i];
+            if (!r.isPersistable()) {
+                Ext.Array.remove(recordsToCreate, r);
+            }
+        }
+
+        // Prevent empty create request
+        if (recordsToCreate.length === 0) {
+            delete options.create;
+        }
+    },
+
+<span id='Sch-data-util-ModelPersistencyManager-method-shallContinueSync'>    shallContinueSync : function(options) {
+</span>        return Boolean((options.create  &amp;&amp; options.create.length  &gt; 0) ||
+                       (options.update  &amp;&amp; options.update.length  &gt; 0) ||
+                       (options.destroy &amp;&amp; options.destroy.length &gt; 0));
+    }
+    // }}}
+});
+</pre>
+</body>
+</html>

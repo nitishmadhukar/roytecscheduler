@@ -1,0 +1,29 @@
+/*
+
+Ext Scheduler 4.0.0
+Copyright(c) 2009-2015 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/license
+
+*/
+.sch-column-header {
+    border-right     : 1px solid #D0D0D0;
+    padding          : 7px 10px 7px 10px;
+    border-color     : #D0D0D0;
+    color            : #404040;
+    background-image : none;
+    background-color : #fff;
+}
+
+.sch-header-row {
+    border-top : 1px solid silver;
+}
+
+.sch-column-header-over {
+    background-color : #eaeff4;
+}
+
+.sch-ganttpanel .sch-column-header,
+.sch-simple-timeaxis .sch-header-row-compact .sch-column-header {
+    padding : 7px 0;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">// Column menu won't expand https://www.sencha.com/forum/showthread.php?304517
+Ext.define('Sch.patches.Explorer', {
+
+    extend      : 'Sch.util.Patch',
+
+    requires    : ['Ext.util.CSS'],
+
+    minVersion  : '6.0.0',
+
+    applyFn : function () {
+        if (Ext.isIE9m) {
+            Ext.util.CSS.createStyleSheet('.' + Ext.baseCSSPrefix + 'column-header-trigger { z-index: 10; }');
+        }
+    }
+});</pre>
+</body>
+</html>
