@@ -36,7 +36,6 @@ Ext.define('App.controller.MinuteSchedulerGridController', {
         var contractNumber = changedRecord.data.Contract;
         var itemPartNumber = changedRecord.data.Item;
         //var startTime = changedRecord.data.StartDate.toGMTString();
-		// debugger;
 		var startTime = App.constants.Constants.convertDateToSpecifiDate(changedRecord.data.StartDate);
        // var endTime = changedRecord.data.EndDate.toGMTString();
 	   var endTime = App.constants.Constants.convertDateToSpecifiDate(changedRecord.data.EndDate);
@@ -48,28 +47,25 @@ Ext.define('App.controller.MinuteSchedulerGridController', {
             url: updateDataURL,
             method: 'POST',
             success: function(response) {
-                var ContractItemTimeElapsedEventStore = Ext.getStore('contractitemtimeelapsedeventstore');
+				// Ext.getBody().unmask();
+				var responseData = JSON.parse(response.responseText);
+				// var ContractItemTimeElapsedEventStore = Ext.getStore('contractitemtimeelapsedeventstore');
+				// ContractItemTimeElapsedEventStore.setData(responseData);
+				var ContractItemTimeElapsedEventStore = Ext.getStore('contractitemtimeelapsedeventstore');
                 ContractItemTimeElapsedEventStore.load({
                     callback: function(records, operation, success) {
 						Ext.getBody().unmask();
                         if (success) {
-							// var minuteSchedulerGrid = Ext.ComponentQuery.query('#minuteSchedulerGrid')[0];
-							// minuteSchedulerGrid.switchViewPreset('customMinuteAndDayPreSet');
-							var schedulerLandingPageView = Ext.ComponentQuery.query('#schedulerLandingPageView')[0];
+				var schedulerLandingPageView = Ext.ComponentQuery.query('#schedulerLandingPageView')[0];
 							schedulerLandingPageView.removeAll();
-							// var minuteSchedulerGrid=Ext.create('App.view.MinuteSchedulerGrid');
 							schedulerLandingPageView.add({
-								items: [{
 											xtype: 'minuteschedulergrid',
-										}
-									]
 							});
                         } else {
                             Ext.Msg.alert('Status', 'Failure');
                         }
                     }
-                });
-                
+                });			
             },
             failure: function(error) {
                 Ext.Msg.alert('Status', 'Failure');

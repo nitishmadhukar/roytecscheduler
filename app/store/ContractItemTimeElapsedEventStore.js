@@ -9,40 +9,20 @@ Ext.define('App.store.ContractItemTimeElapsedEventStore', {
 					url: 'http://roytec.herokuapp.com/api/scheduler/',
 					reader: {
 						type: 'json',
+						getData:function(data){
+							debugger;
+							for(i = 0; i < data.length; i++){
+								var tempStartDate = new Date(data[i].StartDate+'Z');
+								var tempEndDate = new Date(data[i].EndDate+'Z');
+								data[i].StartDate = new Date(tempStartDate.getUTCFullYear(), tempStartDate.getUTCMonth(), tempStartDate.getUTCDate(), tempStartDate.getUTCHours(), tempStartDate.getUTCMinutes());
+								data[i].EndDate = new Date(tempEndDate.getUTCFullYear(), tempEndDate.getUTCMonth(), tempEndDate.getUTCDate(), tempEndDate.getUTCHours(), tempEndDate.getUTCMinutes());
+								
+								// data[i].StartDate = new Date(tempStartDate.getFullYear(), tempStartDate.getMonth(), tempStartDate.getDate(), tempStartDate.getHours(), tempStartDate.getMinutes());
+								// data[i].EndDate = new Date(tempEndDate.getFullYear(), tempEndDate.getMonth(), tempEndDate.getDate(), tempEndDate.getHours(), tempEndDate.getMinutes());
+							}
+							return data;
+						}
 						// rootProperty: 'users'
 					}
-				},
-				                /*data  : [
-                   
-	 {ResourceId : 'r1', Contract : '628221', Item: 'OTHW600EL999', ContractCarletColor: 'orange', percentDone: '100', colorForPercentDone: 'green', count:'1', time:'00:20', Arrangement:'999', StartDate : new Date(2015, 7, 17, 0,00), EndDate : new Date(2015, 7, 17, 0,20)},
-	 {ResourceId : 'r1', Contract : '628221', Item: 'OTHW600DT991', ContractCarletColor: 'orange', percentDone: '100', colorForPercentDone: 'green', count:'2', time:'00:10', Arrangement:'991', StartDate : new Date(2015, 7, 17, 0,20), EndDate : new Date(2015, 7, 17, 0,30)},
-	 {ResourceId : 'r1', Contract : '628221', Item: 'OTHW600DV991', ContractCarletColor: 'orange', percentDone: '85', colorForPercentDone: 'red', count:'3', time:'00:10', Arrangement:'991', StartDate : new Date(2015, 7, 17, 0,30), EndDate : new Date(2015, 7, 17, 0,40)},
-	 {ResourceId : 'r1', Contract : '628224', Item: 'OTHW74APR999', ContractCarletColor: 'orange', percentDone: '40', colorForPercentDone: 'green', count:'4', time:'00:10', Arrangement:'999', StartDate : new Date(2015, 7, 17, 0,40), EndDate : new Date(2015, 7, 17, 0,50)},
-	 {ResourceId : 'r1', Contract : '628224', Item: 'OTHW74APR999', ContractCarletColor: 'orange', percentDone: '63', colorForPercentDone: 'yellow', count:'4', time:'00:10', Arrangement:'999', StartDate : new Date(2015, 7, 17, 0,50), EndDate : new Date(2015, 7, 17, 1,00)},
-	 {ResourceId : 'r1', Contract : '622381', Item: 'OTHW600DP999', ContractCarletColor: 'orange', percentDone: '40', colorForPercentDone: 'green', count:'5', time:'00:20', Arrangement:'999', StartDate : new Date(2015, 7, 17, 1,00), EndDate : new Date(2015, 7, 17, 1,20)},
-	 {ResourceId : 'r1', Contract : '622381', Item: 'OTHW600DP999', ContractCarletColor: 'orange', percentDone: '40', colorForPercentDone: 'green', count:'5', time:'00:10', Arrangement:'999', StartDate : new Date(2015, 7, 17, 1,20), EndDate : new Date(2015, 7, 17, 1,30)},
-	 {ResourceId : 'r1', Contract : '622498', Item: 'OTHW600DS999', ContractCarletColor: 'orange', percentDone: '0', colorForPercentDone: 'green', count:'6', time:'00:05', Arrangement:'999', StartDate : new Date(2015, 7, 17, 1,30), EndDate : new Date(2015, 7, 17, 1,40)},
-	 {ResourceId : 'r1', Contract : '622498', Item: 'OTHW600DS999', ContractCarletColor: 'orange', percentDone: '0', colorForPercentDone: 'green', count:'6', time:'00:20', Arrangement:'999', StartDate : new Date(2015, 7, 17, 1,40), EndDate : new Date(2015, 7, 17, 2,05)},
-	 
-	 {ResourceId : 'r2', Contract : '628221', Item: 'OTHW600EB999', ContractCarletColor: 'blue', percentDone: '100', colorForPercentDone: 'green', count:'7', time:'00:20', Arrangement:'999', StartDate : new Date(2015, 7, 17, 0,00), EndDate : new Date(2015, 7, 17, 0,15)},
-	 {ResourceId : 'r2', Contract : '628221', Item: 'OTHW600EP999', ContractCarletColor: 'blue', percentDone: '100', colorForPercentDone: 'green', count:'8', time:'00:10', Arrangement:'999', StartDate : new Date(2015, 7, 17, 0,15), EndDate : new Date(2015, 7, 17, 0,28)},
-	 {ResourceId : 'r2', Contract : '628221', Item: 'OTHW600FB999', ContractCarletColor: 'blue', percentDone: '60', colorForPercentDone: 'yellow', count:'9', time:'00:10', Arrangement:'999', StartDate : new Date(2015, 7, 17, 0,28), EndDate : new Date(2015, 7, 17, 0,38)},
-	 {ResourceId : 'r2', Contract : '628224', Item: 'OTHW600FB999', ContractCarletColor: 'blue', percentDone: '75', colorForPercentDone: 'yellow', count:'9', time:'00:10', Arrangement:'999', StartDate : new Date(2015, 7, 17, 0,38), EndDate : new Date(2015, 7, 17, 0,50)},
-	 {ResourceId : 'r2', Contract : '628224', Item: 'OTHW600FB999', ContractCarletColor: 'blue', percentDone: '40', colorForPercentDone: 'green', count:'9', time:'00:10', Arrangement:'999', StartDate : new Date(2015, 7, 17, 0,50), EndDate : new Date(2015, 7, 17, 1,05)},
-	 {ResourceId : 'r2', Contract : '622381', Item: 'OTHW600EB999', ContractCarletColor: 'blue', percentDone: '40', colorForPercentDone: 'green', count:'7', time:'00:20', Arrangement:'999', StartDate : new Date(2015, 7, 17, 1,05), EndDate : new Date(2015, 7, 17, 1,18)},
-	 {ResourceId : 'r2', Contract : '622381', Item: 'OTHW600EP999', ContractCarletColor: 'blue', percentDone: '81', colorForPercentDone: 'red', count:'8', time:'00:10', Arrangement:'999', StartDate : new Date(2015, 7, 17, 1,18), EndDate : new Date(2015, 7, 17, 1,30)},
-	 {ResourceId : 'r2', Contract : '622498', Item: 'OTHW600FB999', ContractCarletColor: 'blue', percentDone: '0', colorForPercentDone: 'green', count:'9', time:'00:05', Arrangement:'999', StartDate : new Date(2015, 7, 17, 1,30), EndDate : new Date(2015, 7, 17, 1,55)},
-	 {ResourceId : 'r2', Contract : '622498', Item: 'OTHW600FB999', ContractCarletColor: 'blue', percentDone: '0', colorForPercentDone: 'green', count:'9', time:'00:20', Arrangement:'999', StartDate : new Date(2015, 7, 17, 1,55), EndDate : new Date(2015, 7, 17, 2,05)},
-	 
-	 {ResourceId : 'r3', Contract : '628221', Item: 'OTHW600EL999', ContractCarletColor: 'lightseagreen', percentDone: '100', colorForPercentDone: 'red', count:'1', time:'00:20', Arrangement:'999', StartDate : new Date(2015, 7, 17, 0,00), EndDate : new Date(2015, 7, 17, 0,20)},
-	 {ResourceId : 'r3', Contract : '628221', Item: 'OTHW600DT991', ContractCarletColor: 'lightseagreen', percentDone: '100', colorForPercentDone: 'green', count:'2', time:'00:10', Arrangement:'991', StartDate : new Date(2015, 7, 17, 0,20), EndDate : new Date(2015, 7, 17, 0,30)},
-	 {ResourceId : 'r3', Contract : '628221', Item: 'OTHW600DV991', ContractCarletColor: 'lightseagreen', percentDone: '100', colorForPercentDone: 'red', count:'3', time:'00:10', Arrangement:'991', StartDate : new Date(2015, 7, 17, 0,30), EndDate : new Date(2015, 7, 17, 0,40)},
-	 {ResourceId : 'r3', Contract : '628224', Item: 'OTHW74APR999', ContractCarletColor: 'lightseagreen', percentDone: '60', colorForPercentDone: 'yellow', count:'4', time:'00:10', Arrangement:'999', StartDate : new Date(2015, 7, 17, 0,40), EndDate : new Date(2015, 7, 17, 0,50)},
-	 {ResourceId : 'r3', Contract : '628224', Item: 'OTHW600DP999', ContractCarletColor: 'lightseagreen', percentDone: '40', colorForPercentDone: 'green', count:'5', time:'00:10', Arrangement:'999', StartDate : new Date(2015, 7, 17, 0,50), EndDate : new Date(2015, 7, 17, 1,00)},
-	 {ResourceId : 'r3', Contract : '622381', Item: 'OTHW600DS999', ContractCarletColor: 'lightseagreen', percentDone: '92', colorForPercentDone: 'red', count:'6', time:'00:20', Arrangement:'999', StartDate : new Date(2015, 7, 17, 1,00), EndDate : new Date(2015, 7, 17, 1,20)},
-	 {ResourceId : 'r3', Contract : '622381', Item: 'OTHW600EL999', ContractCarletColor: 'lightseagreen', percentDone: '0', colorForPercentDone: 'green', count:'1', time:'00:10', Arrangement:'999', StartDate : new Date(2015, 7, 17, 1,20), EndDate : new Date(2015, 7, 17, 1,30)},
-	 {ResourceId : 'r3', Contract : '622498', Item: 'OTHW600DT991', ContractCarletColor: 'lightseagreen', percentDone: '0', colorForPercentDone: 'green', count:'2', time:'00:05', Arrangement:'991', StartDate : new Date(2015, 7, 17, 1,30), EndDate : new Date(2015, 7, 17, 1,42)},
-	 {ResourceId : 'r3', Contract : '622498', Item: 'OTHW600DV991', ContractCarletColor: 'lightseagreen', percentDone: '0', colorForPercentDone: 'green', count:'3', time:'00:20', Arrangement:'991', StartDate : new Date(2015, 7, 17, 1,42), EndDate : new Date(2015, 7, 17, 2,05)},
-	 
-                ]*/
+				}
             });
